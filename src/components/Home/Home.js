@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "./../RecipeCard/RecipeCard";
 import "./Home.css";
+import store from '../../store';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: store.getState().recipes
     };
   }
 
@@ -16,10 +17,10 @@ class Home extends Component {
       return (
         <RecipeCard
           key={i}
-          name={recipe.name}
-          category={recipe.category}
-          authorFirst={recipe.authorFirst}
-          authorLast={recipe.authorLast}
+          name={recipe.recipeName}
+          category={recipe.recipeCategory}
+          authorFirst={recipe.authorFirstName}
+          authorLast={recipe.authorLastName}
           ingredients={recipe.ingredients}
           instructions={recipe.instructions}
         />
